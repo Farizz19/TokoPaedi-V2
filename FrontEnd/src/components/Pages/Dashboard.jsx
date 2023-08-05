@@ -1,28 +1,64 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Footer from "../Part/Footer";
 import Navbar from "../Part/Navbar";
 import Sidebar from "../Part/Sidebar";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function dashboard() {
+function Dashboard() {
+
+  const [user, setUser] = useState({});
+  const Navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const fetchData = async () => {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    await axios.get("http://localhost:8000/api/user").then((response) => {
+      setUser(response.data);
+    });
+  };
+
+  useEffect(() => {
+    if (!token) {
+      Navigate("/");
+    }
+
+    fetchData();
+  }, []);
+
+  // //function logout
+  // const logoutHanlder = async () => {
+  //   //set axios header dengan type Authorization + Bearer token
+  //   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  //   //fetch Rest API
+  //   await axios.post("http://localhost:8000/api/logout").then(() => {
+  //     //remove token from localStorage
+  //     localStorage.removeItem("token");
+
+  //     //redirect halaman login
+  //     Navigate("/");
+  //   });
+  // };
+
   return (
     <div>
-      <div class="container-scroller">
+      <div className="container-scroller">
         <Navbar />
 
-        <div class="container-fluid page-body-wrapper">
-          <div class="theme-setting-wrapper"></div>
+        <div className="container-fluid page-body-wrapper">
+          <div className="theme-setting-wrapper"></div>
 
           <Sidebar />
 
-          <div class="main-panel">
-            <div class="content-wrapper">
-              <div class="row">
-                <div class="col-md-12 grid-margin">
-                  <div class="row">
-                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                      <h3 class="font-weight-bold">Selamat Datang Fariz</h3>
-                      <h6 class="font-weight-normal mb-0">
+          <div className="main-panel">
+            <div className="content-wrapper">
+              <div className="row">
+                <div className="col-md-12 grid-margin">
+                  <div className="row">
+                    <div className="col-12 col-xl-8 mb-4 mb-xl-0">
+                      <h3 className="font-weight-bold">Selamat Datang, {user.name}</h3>
+                      <h6 className="font-weight-normal mb-0">
                         Selamat Datang Di TokoPaedi{" "}
                         {/* <span class="text-primary">3 unread alerts!</span> */}
                       </h6>
@@ -30,12 +66,12 @@ function dashboard() {
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <p class="card-title">WELCOME TO Dashboard</p>
+              <div className="row">
+                <div className="col grid-margin stretch-card">
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="d-flex justify-content-between">
+                        <p className="card-title">WELCOME TO Dashboard</p>
                       </div>
                     </div>
                   </div>
@@ -51,4 +87,4 @@ function dashboard() {
   );
 }
 
-export default dashboard;
+export default Dashboard;

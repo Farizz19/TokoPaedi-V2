@@ -4,14 +4,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // COMPONENTS & IMAGES
 import Dashboard from "./components/Pages/Dashboard";
-import Category from "./components/Pages/Category/Category";
 
+import Category from "./components/Pages/Product/Category";
+import Product from "./components/Pages/Product/Product";
+
+import Users from "./components/Pages/Account/Users";
+
+import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
+// import Register from "./components/Auth/Register";
 // COMPONENTS & IMAGES
 
 // CSS
 import "./App.css";
-import Users from "./components/Pages/Account/Users";
 // CSS
 
 function App() {
@@ -22,8 +27,13 @@ function App() {
           <Route index element={<Login />} />
           {/* <Route path="/Dashboard" element={<Layout />} /> */}
           <Route path="/Dashboard" element={<Dashboard />} />
+          
           <Route path="/Users" element={<Users />} />
+
           <Route path="/Category" element={<Category />} />
+          <Route path="/Product" element={<Product />} />
+
+          <Route path="/Register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -6,7 +6,7 @@ function Sidebar() {
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
         <li class="nav-item">
-          <Link to={"/"} class="nav-link">
+          <Link to={"/dashboard"} class="nav-link">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">Dashboard</span>
           </Link>
@@ -29,7 +29,7 @@ function Sidebar() {
               <li class="nav-item">
                 {" "}
                 <Link
-                  to='/Users'
+                  to="/Users"
                   class="nav-link"
                   href="pages/samples/login.html"
                 >
@@ -39,7 +39,11 @@ function Sidebar() {
               </li>
               <li class="nav-item">
                 {" "}
-                <Link to={"/"} class="nav-link" href="pages/samples/register.html">
+                <Link
+                  to={"/"}
+                  class="nav-link"
+                  href="pages/samples/register.html"
+                >
                   {" "}
                   Register{" "}
                 </Link>
@@ -65,7 +69,7 @@ function Sidebar() {
               <li class="nav-item">
                 {" "}
                 <Link
-                  to='/Products'
+                  to="/Product"
                   class="nav-link"
                   href="pages/tables/basic-table.html"
                 >
@@ -75,7 +79,7 @@ function Sidebar() {
               <li class="nav-item">
                 {" "}
                 <Link
-                  to='/Category'
+                  to="/Category"
                   class="nav-link"
                   href="pages/tables/basic-table.html"
                 >
@@ -85,10 +89,16 @@ function Sidebar() {
             </ul>
           </div>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="pages/documentation/documentation.html">
-            <i class="icon-paper menu-icon"></i>
-            <span class="menu-title">Documentation</span>
+          <a
+            class="nav-link"
+            href="#tables"
+            aria-expanded="false"
+            aria-controls="tables"
+          >
+            <i class="icon-grid menu-icon"></i>
+            <span class="menu-title">Log Out</span>
           </a>
         </li>
       </ul>

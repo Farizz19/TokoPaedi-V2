@@ -1,38 +1,60 @@
-import React from 'react'
+import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+
+  const Navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const logoutHanlder = async () => {
+    //set axios header dengan type Authorization + Bearer token
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    //fetch Rest API
+    await axios.post("http://localhost:8000/api/logout").then(() => {
+      //remove token from localStorage
+      localStorage.removeItem("token");
+
+      //redirect halaman login
+      Navigate("/");
+    });
+  };
+
   return (
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html">
-          <img src="./public/assets/images/tokopaedi.png" class="mr-2" alt="logo" />
+    <nav className="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a className="navbar-brand brand-logo mr-5" href="index.html">
+          <img
+            src="./public/assets/images/tokopaedi.png"
+            className="mr-2"
+            alt="logo"
+          />
         </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html">
+        <a className="navbar-brand brand-logo-mini" href="index.html">
           <img src="./public/assets/images/tokopaedi.png" alt="logo" />
         </a>
       </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+      <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button
-          class="navbar-toggler navbar-toggler align-self-center"
+          className="navbar-toggler navbar-toggler align-self-center"
           type="button"
           data-toggle="minimize"
         >
-          <span class="icon-menu"></span>
+          <span className="icon-menu"></span>
         </button>
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-search d-none d-lg-block">
-            <div class="input-group">
+        <ul className="navbar-nav mr-lg-2">
+          <li className="nav-item nav-search d-none d-lg-block">
+            <div className="input-group">
               <div
-                class="input-group-prepend hover-cursor"
+                className="input-group-prepend hover-cursor"
                 id="navbar-search-icon"
               >
-                <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
+                <span className="input-group-text" id="search">
+                  <i className="icon-search"></i>
                 </span>
               </div>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="navbar-search-input"
                 placeholder="Search now"
                 aria-label="search"
@@ -41,92 +63,71 @@ function Navbar() {
             </div>
           </li>
         </ul>
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
+        <ul className="navbar-nav navbar-nav-right">
+          <li className="nav-item dropdown">
             <a
-              class="nav-link count-indicator dropdown-toggle"
+              className="nav-link count-indicator dropdown-toggle"
               id="notificationDropdown"
               href="#"
               data-toggle="dropdown"
             >
-              <i class="icon-bell mx-0"></i>
-              <span class="count"></span>
+              <img
+                src="./public/assets/images/faces/face28.jpg"
+                width={43}
+                alt="profile"
+              />
             </a>
             <div
-              class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+              className="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
               aria-labelledby="notificationDropdown"
             >
-              <p class="mb-0 font-weight-normal float-left dropdown-header">
+              <p className="mb-0 font-weight-normal float-left dropdown-header">
                 Notifications
               </p>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="ti-info-alt mx-0"></i>
+              <a className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-success">
+                    <i className="ti-info-alt mx-0"></i>
                   </div>
                 </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">
+                <div className="preview-item-content">
+                  <h6 className="preview-subject font-weight-normal">
                     Application Error
                   </h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
+                  <p className="font-weight-light small-text mb-0 text-muted">
                     Just now
                   </p>
                 </div>
               </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="ti-settings mx-0"></i>
+              <a className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-warning">
+                    <i className="ti-settings mx-0"></i>
                   </div>
                 </div>
               </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-info">
-                    <i class="ti-user mx-0"></i>
+              <a className="dropdown-item preview-item">
+                <div className="preview-thumbnail">
+                  <div className="preview-icon bg-info">
+                    <img
+                      src="./public/assets/images/faces/face28.jpg"
+                      alt="profile"
+                    />
+                    <i className="ti-user mx-0"></i>
                   </div>
                 </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">
-                    New user registration
-                  </h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    2 days ago
-                  </p>
+                <div className="preview-item-content">
+                  <a>
+                    <span onClick={logoutHanlder}>Log Out</span>
+                  </a>
                 </div>
               </a>
             </div>
           </li>
-          <li class="nav-item nav-profile dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              data-toggle="dropdown"
-              id="profileDropdown"
-            >
-              <img
-                src="./public/assets/images/faces/face28.jpg"
-                alt="profile"
-              />
-            </a>
-          </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="icon-ellipsis"></i>
-            </a>
-          </li>
         </ul>
-        <button
-          class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
-          type="button"
-          data-toggle="offcanvas"
-        >
-          <span class="icon-menu"></span>
-        </button>
       </div>
     </nav>
   );
 }
 
-export default Navbar
+export default Navbar;

@@ -4,7 +4,7 @@ import Footer from "../../Part/Footer";
 import Navbar from "../../Part/Navbar";
 import Sidebar from "../../Part/Sidebar";
 
-function Users() {
+function Product() {
   return (
     <div>
       <div class="container-scroller">
@@ -22,7 +22,7 @@ function Users() {
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
-                        <p class="card-title">WELCOME TO Users</p>
+                        <p class="card-title">WELCOME TO Product</p>
                       </div>
                     </div>
                   </div>
@@ -38,4 +38,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default Product;
