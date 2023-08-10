@@ -27,20 +27,6 @@ function Dashboard() {
     fetchData();
   }, []);
 
-  // //function logout
-  // const logoutHanlder = async () => {
-  //   //set axios header dengan type Authorization + Bearer token
-  //   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  //   //fetch Rest API
-  //   await axios.post("http://localhost:8000/api/logout").then(() => {
-  //     //remove token from localStorage
-  //     localStorage.removeItem("token");
-
-  //     //redirect halaman login
-  //     Navigate("/");
-  //   });
-  // };
-
   return (
     <div>
       <div className="container-scroller">
@@ -71,7 +57,7 @@ function Dashboard() {
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex justify-content-between">
-                        <p className="card-title">WELCOME TO Dashboard</p>
+                        <p className="card-title">Welcome To Dashboard</p>
                       </div>
                     </div>
                   </div>
