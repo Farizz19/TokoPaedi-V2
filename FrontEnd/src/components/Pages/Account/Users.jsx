@@ -9,27 +9,26 @@ import Sidebar from "../../Part/Sidebar";
 // import User from "./UsersAPI";
 
 function Users() {
-  // const [ListUser, setDataUser] = useState([]);
-
-  // useEffect(() => {
-  //   User((data) => {
-  //     setDataUser(data);
-  //   });
-  // });
-
   const [user, setUser] = useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     axios
       .get("http://localhost:8000/api/users")
       .then((res) => {
         setUser(res.data);
-        //  console.log(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   });
+
+  //     deleteUser = (e, id) => {
+  //       const res = axios.delete('http://localhost:8000/api/delete/${id}')
+  //       if (res.data.status === 200) {
+  //         console.log(res.data.message);
+  //       }
+  // }
 
   return (
     <div>
@@ -52,46 +51,57 @@ function Users() {
                       </div>
                       <div>
                         <span>
-                          <Link to="/Add" className="btn btn-dark mb-3">
-                            Add User
+                          <Link
+                            to="/Add"
+                            className="btn btn-dark rounded mb-3 float-right"
+                          >
+                            ADD USER
                           </Link>
                         </span>
-                        <table className="table bg-primary text-light rounded shadow">       
-                          <tr className="text-center">
-                            <th>No</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th colSpan="2">Action</th>
-                          </tr>
+                        <table className="table bg-primary text-light rounded shadow">
+                          <thead>
+                            <tr className="text-center">
+                              <th>No</th>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th colSpan="2">Action</th>
+                            </tr>
+                          </thead>
 
-                          {
-                            user.length > 0 &&
-                              // ?
-                              user.map((data, index) => (
-                                // eslint-disable-next-line react/jsx-key
-                                <tr key={index} className="text-center">
-                                  <td>{index + 1}</td>
-                                  <td>{data.name}</td>
-                                  <td>{data.email}</td>
-                                  <td>
-                                    <Link
-                                      to="/edit"
-                                      className="btn btn-success form-control"
-                                    >
-                                      Edit
-                                    </Link>
-                                  </td>
-                                  <td>
-                                    <button className="btn btn-danger form-control">
-                                      Delete
-                                    </button>
-                                  </td>
-                                </tr>
-                              ))
-                            // : <tr>
-                            //   <td colSpan="4">Data Kosong</td>
-                            //   </tr>
-                          }
+                          <tbody>
+                            {
+                              user.length > 0 &&
+                                // ?
+                                user.map((data, index) => (
+                                  // eslint-disable-next-line react/jsx-key
+                                  <tr key={index} className="text-center">
+                                    <td>{index + 1}</td>
+                                    <td>{data.name}</td>
+                                    <td>{data.email}</td>
+                                    <td>
+                                      <Link
+                                        to="/edit"
+                                        className="btn btn-success rounded form-control"
+                                      >
+                                        EDIT
+                                      </Link>
+                                    </td>
+                                    <td>
+                                      <button
+                                        type="button"
+                                        // onClick={(e) => this.delete(e, data.id)}
+                                        className="btn btn-danger form-control rounded"
+                                      >
+                                        DELETE
+                                      </button>
+                                    </td>
+                                  </tr>
+                                ))
+                              // : <tr>
+                              //   <td colSpan="4">Data Kosong</td>
+                              //   </tr>
+                            }
+                          </tbody>
                         </table>
                       </div>
                     </div>

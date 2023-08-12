@@ -9,7 +9,9 @@ Route::post('/logout', App\Http\Controllers\API\LogoutController::class)->name('
 
 Route::get('/users', App\Http\Controllers\API\UserController::class)->name('users');
 
-Route::get('/add', App\Http\Controllers\API\AddController::class)->name('add');
+Route::post('/add', App\Http\Controllers\API\AddController::class)->name('add');
+
+// Route::get('delete/{id}', App\Http\Controllers\API\DeleteController::class)->name('delete');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 
 import axios from "axios";
 
+import Swal from "sweetalert2";
+
 import Logo from "../../../public/assets/images/logo.svg";
 import TokoPaedi from "../../../public/assets/images/tokopaedi.png";
 
@@ -30,7 +32,11 @@ function Login() {
         //set token on localStorage
         localStorage.setItem("token", response.data.token);
 
-        //redirect to dashboard
+        Swal.fire(
+          "Success",
+          "Login Success",
+          "success",
+        )
         Navigate("/Dashboard");
       })
       .catch((error) => {

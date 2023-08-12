@@ -9,10 +9,10 @@ function Footer() {
           <a href="https://www.bootstrapdash.com/" target="_blank">
             XII PPLG 2023
           </a>{" "}
-          from BootstrapDash. All rights reserved.
+          With Skydash Template. All Rights Reserved.
         </span>
         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-          Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i>
+          XII PPLG | SMKS Taruna Persada Dumai <i class="ti-heart text-danger ml-1"></i>
         </span>
       </div>
     </footer>

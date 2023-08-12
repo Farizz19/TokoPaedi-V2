@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router';
-
 //import axios
-import axios from 'axios';
+import axios from "axios";
+
+import Swal from "sweetalert2";
 
 import Footer from "../../Part/Footer";
 import Navbar from "../../Part/Navbar";
@@ -12,44 +12,34 @@ import Sidebar from "../../Part/Sidebar";
 // import User from "./UsersAPI";
 
 function Add() {
-  //define state
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-//   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-
-  //define state validation
-  const [validation, setValidation] = useState([]);
-
-  //define history
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
-  //function "registerHanlder"
-  const registerHandler = async (e) => {
+  const addHandler = async (e) => {
     e.preventDefault();
-
-    //initialize formData
-    const formData = new FormData();
-
-    //append data to formData
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("password", password);
-    // formData.append("password_confirmation", passwordConfirmation);
-
-    //send data to server
     await axios
-      .post("http://localhost:8000/api/add", formData)
+      .post("http://localhost:8000/api/add", form)
       .then(() => {
-        //redirect to logi page
-        navigate.push("/users");
+        Swal.fire("Success", "Data Has Been Added", "success");
+        navigate("/users");
       })
-      .catch((error) => {
-        //assign error to state "validation"
-        setValidation(error.response.data);
+      .catch((err) => {
+        console.log(err);
       });
-    };
-    
+  };
+
+  // const Sweet = () => {
+  //   Swal.fire(
+  //     'the internet?',
+  //     'that test',
+  //     'test'
+  //   )
+  // }
+
   return (
     <div>
       <div className="container-scroller">
@@ -67,87 +57,102 @@ function Add() {
                   <div className="card">
                     <div className="card-body">
                       <div className="d-flex justify-content-between">
-                        {validation.message && (
+                        {/* {validation.message && (
                           <div className="alert alert-danger">
                             {validation.message}
                           </div>
-                        )}
+                        )} */}
                         <p className="card-title">Welcome To Add Users</p>
                       </div>
-                      <div onSubmit={registerHandler}>
-                        <table className="table bg-primary text-light rounded shadow">
-                          <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>
-                              <input
-                                onChange={(e) => setName(e.target.value)}
-                                className="form-control"
-                                type="text"
-                                value={name}
-                                placeholder="Enter Your Name"
-                              />
-                              {validation.name && (
-                                <div className="alert alert-danger">
-                                  {validation.name[0]}
-                                </div>
-                              )}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td>
-                              <input
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="form-control"
-                                type="email"
-                                value={email}
-                                placeholder="Enter Your Email"
-                              />
-                              {validation.email && (
-                                <div className="alert alert-danger">
-                                  {validation.email[0]}
-                                </div>
-                              )}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Password</td>
-                            <td>:</td>
-                            <td>
-                              <input
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="form-control"
-                                type="password"
-                                value={password}
-                                placeholder="Enter Your Password"
-                              />
-                              {validation.password && (
-                                <div className="alert alert-danger">
-                                  {validation.password[0]}
-                                </div>
-                              )}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colSpan="3">
-                              <button type="submit" className="btn btn-success form-control text-light">
-                                Add
-                              </button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colSpan="3">
-                              <Link
-                                to="/Users"
-                                className="btn btn-danger form-control"
-                              >
-                                Back
-                              </Link>
-                            </td>
-                          </tr>
-                        </table>
+                      <div>
+                        <form onSubmit={addHandler}>
+                          <table className="table bg-primary text-light rounded shadow">
+                            <tr>
+                              <td>Name</td>
+                              <td>:</td>
+                              <td>
+                                <input
+                                  value={form.name}
+                                  onChange={(e) =>
+                                    setForm({ ...form, name: e.target.value })
+                                  }
+                                  className="form-control"
+                                  type="text"
+                                  placeholder="Enter Your Name"
+                                />
+                                {/* {validation.name && (
+                                  <div className="alert alert-danger">
+                                    {validation.name[0]}
+                                  </div>
+                                )} */}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>Email</td>
+                              <td>:</td>
+                              <td>
+                                <input
+                                  value={form.email}
+                                  onChange={(e) =>
+                                    setForm({ ...form, email: e.target.value })
+                                  }
+                                  className="form-control"
+                                  type="email"
+                                  placeholder="Enter Your Email"
+                                />
+                                {/* {validation.email && (
+                                  <div className="alert alert-danger">
+                                    {validation.email[0]}
+                                  </div>
+                                )} */}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>Password</td>
+                              <td>:</td>
+                              <td>
+                                <input
+                                  value={form.password}
+                                  onChange={(e) =>
+                                    setForm({
+                                      ...form,
+                                      password: e.target.value,
+                                    })
+                                  }
+                                  className="form-control"
+                                  type="password"
+                                  placeholder="Enter Your Password"
+                                />
+                                {/* {validation.password && (
+                                  <div className="alert alert-danger">
+                                    {validation.password[0]}
+                                  </div>
+                                )} */}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan="3">
+                                <button
+                                  type="submit"
+                                  // onClick={Sweet}
+                                  className="btn btn-success form-control text-light"
+                                >
+                                  SAVE
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td colSpan="3">
+                                <Link
+                                  to="/Users"
+                                  className="btn btn-danger form-control"
+                                >
+                                  BACK
+                                </Link>
+                              </td>
+                            </tr>
+                          </table>
+                        </form>
                       </div>
                     </div>
                   </div>
