@@ -1,12 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import axios from "axios";
 
 import Swal from "sweetalert2";
 
-import Logo from "../../../public/assets/images/logo.svg";
 import TokoPaedi from "../../../public/assets/images/tokopaedi.png";
 
 function Login() {
@@ -37,7 +35,7 @@ function Login() {
           "Login Success",
           "success",
         )
-        Navigate("/Dashboard");
+        Navigate("/Admin/Dashboard");
       })
       .catch((error) => {
         //assign error to state "validation"
@@ -47,29 +45,29 @@ function Login() {
 
   return (
     <>
-      <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-          <div class="content-wrapper d-flex align-items-center auth px-0">
-            <div class="row w-100 mx-0">
-              <div class="col-lg-4 mx-auto">
+      <div className="container-scroller">
+        <div className="container-fluid page-body-wrapper full-page-wrapper">
+          <div className="content-wrapper d-flex align-items-center auth px-0">
+            <div className="row w-100 mx-0">
+              <div className="col-lg-4 mx-auto">
                 {validation.message && (
                   <div className="alert alert-danger">{validation.message}</div>
                 )}
 
                 <div
                   onSubmit={loginHandler}
-                  class="auth-form-light rounded text-left py-5 px-4 px-sm-5"
+                  className="auth-form-light rounded text-left py-5 px-4 px-sm-5"
                 >
-                  <div class="brand-logo">
+                  <div className="brand-logo">
                     <img src={TokoPaedi} alt="logo" />
                   </div>
                   <h4>Hello! Welcome To TokoPaedi V.2</h4>
-                  <h6 class="font-weight-light">Sign in to continue.</h6>
-                  <form class="pt-3">
-                    <div class="form-group">
+                  <h6 className="font-weight-light">Sign in to continue.</h6>
+                  <form className="pt-3">
+                    <div className="form-group">
                       <input
                         type="email"
-                        class="form-control rounded bg-light form-control-lg"
+                        className="form-control rounded bg-light form-control-lg"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         id="exampleInputEmail1"
@@ -81,10 +79,10 @@ function Login() {
                         {validation.email[0]}
                       </div>
                     )}
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
                         type="password"
-                        class="form-control rounded bg-light form-control-lg"
+                        className="form-control rounded bg-light form-control-lg"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         id="exampleInputPassword1"
@@ -96,30 +94,13 @@ function Login() {
                         {validation.password[0]}
                       </div>
                     )}
-                    <div class="mt-3">
+                    <div className="mt-3">
                       <button
                         type="submit"
-                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                        className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
                       >
                         Sign In
                       </button>
-                    </div>
-                    <div class="my-2 d-flex justify-content-between align-items-center">
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" />
-                          Keep me signed in
-                        </label>
-                      </div>
-                      <a href="#" class="auth-link text-black">
-                        Forgot password?
-                      </a>
-                    </div>
-                    <div class="text-center mt-4 font-weight-light">
-                      Don't have an account?{" "}
-                      <a href="register.html" class="text-primary">
-                        Create
-                      </a>
                     </div>
                   </form>
                 </div>

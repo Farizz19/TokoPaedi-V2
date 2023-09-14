@@ -1,0 +1,15 @@
+a:hover {
+    color: orange;
+}
+
+#desc {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#line {
+    height: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}

@@ -1,32 +1,31 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <nav class="sidebar sidebar-offcanvas" id="sidebar">
-      <ul class="nav">
-        <li class="nav-item">
+    <nav className="sidebar sidebar-offcanvas" id="sidebar">
+      <ul className="nav">
+        <li className="nav-item">
           <Link to={"/dashboard"} class="nav-link">
-            <i class="icon-grid menu-icon"></i>
-            <span class="menu-title">Dashboard</span>
+            <i className="icon-grid menu-icon"></i>
+            <span className="menu-title">Dashboard</span>
           </Link>
         </li>
 
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="collapse"
             href="#auth"
             aria-expanded="false"
             aria-controls="auth"
           >
-            <i class="icon-head menu-icon"></i>
-            <span class="menu-title">Account</span>
-            <i class="menu-arrow"></i>
+            <i className="icon-head menu-icon"></i>
+            <span className="menu-title">Account</span>
+            <i className="menu-arrow"></i>
           </a>
-          <div class="collapse" id="auth">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+          <div className="collapse" id="auth">
+            <ul className="nav flex-column sub-menu">
+              <li className="nav-item">
                 {" "}
                 <Link
                   to="/Users"
@@ -37,7 +36,7 @@ function Sidebar() {
                   Users{" "}
                 </Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 {" "}
                 <Link
                   to={"/"}
@@ -52,35 +51,35 @@ function Sidebar() {
           </div>
         </li>
 
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             data-toggle="collapse"
             href="#tables"
             aria-expanded="false"
             aria-controls="tables"
           >
-            <i class="icon-grid-2 menu-icon"></i>
-            <span class="menu-title">Products</span>
-            <i class="menu-arrow"></i>
+            <i className="icon-grid-2 menu-icon"></i>
+            <span className="menu-title">Products</span>
+            <i className="menu-arrow"></i>
           </a>
-          <div class="collapse" id="tables">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
+          <div className="collapse" id="tables">
+            <ul className="nav flex-column sub-menu">
+              <li className="nav-item">
                 {" "}
                 <Link
                   to="/Product"
-                  class="nav-link"
+                  className="nav-link"
                   href="pages/tables/basic-table.html"
                 >
                   Products
                 </Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item">
                 {" "}
                 <Link
                   to="/Category"
-                  class="nav-link"
+                  className="nav-link"
                   href="pages/tables/basic-table.html"
                 >
                   Category
@@ -90,15 +89,15 @@ function Sidebar() {
           </div>
         </li>
 
-        <li class="nav-item">
+        <li className="nav-item">
           <a
-            class="nav-link"
+            className="nav-link"
             href="#tables"
             aria-expanded="false"
             aria-controls="tables"
           >
-            <i class="icon-grid menu-icon"></i>
-            <span class="menu-title">Log Out</span>
+            <i className="icon-grid menu-icon"></i>
+            <span className="menu-title">Log Out</span>
           </a>
         </li>
       </ul>

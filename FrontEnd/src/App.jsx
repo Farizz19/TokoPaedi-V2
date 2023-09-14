@@ -3,6 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // REACT LIBRARY
 
 // COMPONENTS & IMAGES
+import Beranda from "./user/Beranda";
+import SignIn from "./user/auth/Login";
+import SignUp from "./user/auth/Register";
+
 import Dashboard from "./components/Pages/Dashboard";
 
 import Category from "./components/Pages/Product/Category";
@@ -24,8 +28,14 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={<Login />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          {/* ADMIN */}
+          <Route index element={<Beranda />} />
+          <Route path="/User/Register" element={<SignUp />} />
+          <Route path="/User/Login" element={<SignIn />} /> 
+          {/* ADMIN */}
+
+          <Route path="/Admin/Login" element={<Login />} /> 
+          <Route path="/Admin/Dashboard" element={<Dashboard />} /> 
           
           <Route path="/Users" element={<Users />} />
           <Route path="/Add" element={<Add />} />
@@ -41,5 +51,3 @@ function App() {
 }
 
 export default App;
-
-

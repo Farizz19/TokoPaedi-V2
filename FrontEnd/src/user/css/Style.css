@@ -1,0 +1,104 @@
+body {
+    /* background-color: orange; */
+    /* max-width:max-content; */
+    /* background-color: #212529; */
+}
+
+.navbar a:hover {
+    color: black;
+    background-color: orange;
+    border-radius: 10px;
+    /* text-shadow: 2px 2px white; */
+}
+
+#link {
+    text-decoration: none;
+}
+
+.navbar {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+a {
+    color: white;
+}
+
+#headerimg {
+    /* height: 90vh; */
+    width: 100%;
+    /* background:linear-gradient(orange, white) */
+}
+
+.card {
+    float: left;
+    border: 2px solid black;
+    /* background-color: black; */
+}
+
+h1 {
+    font-family:'Times New Roman', Times, serif;
+    color: white;
+    background-color: grey;
+    width: 500px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.centeredos {
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+.centeredcarousel {
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+/* .centeredwelcome {
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+} */
+
+.searchbar {
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    width: 500px;
+}
+
+#product a:hover {
+    color: black;
+}
+
+#product a {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#navbarnav {
+    /* margin: 30px; */
+    margin-left: 43%;
+}

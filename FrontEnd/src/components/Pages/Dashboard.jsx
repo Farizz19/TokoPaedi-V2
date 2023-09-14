@@ -1,8 +1,8 @@
-import { Link, Navigate } from "react-router-dom";
+// import { Link, Navigate } from "react-router-dom";
 import Footer from "../Part/Footer";
 import Navbar from "../Part/Navbar";
 import Sidebar from "../Part/Sidebar";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
